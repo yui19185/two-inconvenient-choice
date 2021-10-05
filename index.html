@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>大小ゲーム</title>
+<link href="../../_common/images/spadenoA.jpg" rel="shortcut icon">
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,500" rel="stylesheet">
+<link href="../../_common/css/style.css" rel="stylesheet">
+
+<body>
+  <div id="home" class="big-bg">
+    <audio  id="music" preload="auto">
+      <source src="sample.mp3" type="audio/mp3">
+      <source src="sample.mp3" type="audio/wav">
+    </audio>
+<header>
+<div class="container">
+<h1>大きいのか小さいか</h1>
+<h2>～不自由な2択～</h2>
+</div><!-- /.container -->
+</header>
+<div class="container">
+<section>
+    <div id="comp">
+    <h3>COMの手(1~13の数字)を予想して<span id="akamidasi">High&Low</span>を選べ</h3>
+    <img id= com src="com.jpg" width="130" height="150">
+    <p><span id="com2">com</span>の手</p>
+    </div>
+
+
+    <div id="flex-container">
+    <div id="array" class="card1"><!-- ランダムな数字 -->
+    <img id="Card_img_NO1" src="s_1.png" width="120" height="150">
+    <div id="button">
+    <input type="button" value="HIGH" onclick="High_Low(selected[0]);"/>
+    <p><span id="com">com</span>はこの数字より<span id="com">大きい</span></p>
+    </div>
+    </div>
+
+
+    <div id="array2">
+    <img id="Card_img_NO2" src="s_2.png" width="120" height="150">
+    <div class="button">
+    <input type="button" value="LOW" onclick="High_Low2(selected[1]);"/>
+    <p><span id="com">com</span>はこの数字より<span id="com2">小さい</span></p>
+    </div>
+    </div>
+    </div>
+    <input type="button" value="リセット" onclick="window.location.reload();"/>
+  </div>
+</section>
+</body>
+</div><!-- /.container -->
+</main>
+<footer>
+<div class="container">
+<p>JavaScript 2021年9/xx</p>
+</footer>
+</div><!-- /.container -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    'use strict';
+    const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+    const selected = randomSelect(array, 2);
+    console.log(selected)
+
+    // 配列arrayからランダムにnum個の要素を取り出す
+    function randomSelect(array, num){
+      let newArray = [];
+  
+      while(newArray.length < num && array.length > 0){
+        // 配列からランダムな要素を選ぶ
+        const rand = Math.floor(Math.random() * array.length);
+        // 選んだ要素を別の配列に登録する
+        newArray.push(array[rand]);
+        // もとの配列からは削除する
+        array.splice(rand, 1);
+      }
+      return newArray
+      }
+
+      function High_Low(Hi_L) {
+      console.log(Hi_L)
+      const com = Math.floor(Math.random() * 13)+1;
+      console.log('com',com)
+    
+
+      let message = 'test';
+      if(com > Hi_L)
+        {message = '正解'}
+      else if (com < Hi_L)
+      {message = 'はずれ'}
+      else if(com === Hi_L)
+        {message = 'おなじ'}
+      else
+      {message = 'xxx'}
+      window.alert(message + 'comの手は' + com)
+      }
+
+    function High_Low2(Hi_L) {
+      console.log(Hi_L)
+      const com = Math.floor(Math.random() * 13)+1;
+      console.log('com',com)
+    
+
+      let message = 'test';
+      if(com < Hi_L)
+        {message = '正解'}
+      else if (com > Hi_L)
+      {message = 'はずれ'}
+      else if(com === Hi_L)
+        {message = 'おなじ'}
+      else
+      {message = 'xxx'}
+      window.alert(message + 'comの手は' + com)
+    }
+
+    document.getElementById("Card_img_NO1").src="s_" + selected[0] + ".png";
+
+    document.getElementById("Card_img_NO2").src="s_" + selected[1] + ".png";
+
+</script>
+</head>
+</html>

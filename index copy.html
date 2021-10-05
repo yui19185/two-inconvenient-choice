@@ -1,0 +1,25 @@
+<!-- 見えない部分 -->
+<html>
+<head>
+<!-- ↓この下に入力してね！↓ -->
+<script>
+	let card = 1;// 場にあるトランプのカード初期化番号
+
+  let Hi_L = 0;// Low(0) と High(1) どっちを選んだか仮の数字（実際にはクリックで決める）
+  let Result = "●●を選んで、あなたの●●";//勝ち負けの結果の初期値
+
+  function High_Low(Hi_L) {
+    let trump = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,];
+    let trump_n = Math.floor( Math.random() * 13) +1 ;
+    document.getElementById("Before").innerHTML ="場にあるカードは" + trump[trump_n] ;
+  }
+</script>
+</head>
+<!-- ↓ここから見える部分↓ -->
+<body>
+<!-- ↓この下に入力してね！↓ -->
+<p id="Before">場にあるカードは１</p>
+<input type="button" value="プログラムを呼び出す" onClick="High_Low();">
+<!-- ここまで！ -->
+</body>
+</html>

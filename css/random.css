@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+#Card_img_Before {
+    display: block;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #232323;
+    }
+
+#Card_img_After {
+    right: 500px;
+    display: block;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #232323;
+}
